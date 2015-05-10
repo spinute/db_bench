@@ -25,15 +25,30 @@ Cost-Based Query Optimization via AI Planningと同じ条件でDBMSを使って�
 attrは2-10個
 タプルは10k-500k個
 ページに200タプル乗ると仮定
+1行目はp-key(distinct integer)
+他の値はテーブルのタプル数の10%にあたる数までのなかからランダム生成した整数
 
+各実験に対してR, Vを定める
+Rはn_relations(5,10,...,60)
+ どうせ大きい方は全然解けず、12付近で爆発するので、もう少し粒度細かく計測してみる必要がありそう
+Vは変数の個数(V*R)を決める係数(1.2, 1.5, 2.0)
+ 整数にならないときは...?
+変数のうち、3つは定数変数、10個はselectの対象(変数が足らないケースでは後者を削る)
+> Every query has 3 variables set as constants and 10 other variables selected (less if there is not enough variables). For each relation in the query there is a 10% chance of reusing an existing table, otherwise a new table is used. Variables are randomly assigned to relations and we ensure that queries are connected.
+10回ずつ実験は行う
+2.6GHz Six-Core AMD Opteron(tm)
+メモリ2GB
+
+## クライアントとしてなにを使うか
 クライアントもサーバーも手元で実験した
 n_attr=1(intger)へのinsert
-num     | time(s)
-100     | 0.1
-1000    | 0.3
-10000   | 2.4
-100000  | 23.2
-1000000 | 230
+| num     | time(s)  |
+| ------- | -------- |
+| 100     | 0.1  |
+| 1000    | 0.3  |
+| 10000   | 2.4  |
+| 100000  | 23.2 |
+| 1000000 | 230  |
 
 pg: rubyからpostgresを呼ぶためのgem
 なんかやや開発が鈍ってそうだけど、名前をよく聞く

@@ -2,7 +2,8 @@
 
 require 'pg'
 
-# Output a table of current connections to the DB
+# example from http://deveiate.org/code/pg/README_rdoc.html
+
 conn = PG.connect( dbname: 'spinute' )
 
 conn.exec( "SELECT * FROM pintest" ) do |result|
