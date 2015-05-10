@@ -3,12 +3,13 @@
 
 ではないです。
 
----------
+## TODO
 * 論文中の実験設定の再現
 * ~~pgの使い方の理解~~
 * 計測
+* 下の方整理
 
------------
+-----
 結合の実測
 as planningと同じ条件でテーブルを生成してみる
 postgersで実験の条件を再現
@@ -41,7 +42,6 @@ select-project-join queries in relational algebra
 where内が=とandのみのselect-from-where queries in SQL
 (subquery, aggregationがない)
 
-----
 実験
 ベンチマークがない
 商用DBMSの出力との比較のインターフェースがない
@@ -50,7 +50,6 @@ where内が=とandのみのselect-from-where queries in SQL
 attrは2-10個
 タプルは10k-500k個
 ページに200タプル乗ると仮定した
-------------
 
 Robinson
 オーストラリアの人
@@ -59,7 +58,6 @@ planning as satで博論(200ページ)くらい書いてる
 Query Optimization Revisited: An AI Planning Perspective
 2013にほぼ同じ論文を同じメンバーで出している
 
---------------
 pg
 
 クライアントもサーバーも手元で実験した
