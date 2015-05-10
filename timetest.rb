@@ -3,7 +3,7 @@
 require 'pg'
 require 'benchmark'
 
-default = 100
+default_num = 100
 N = ARGV[0].to_i || default
 
 conn = PG.connect
