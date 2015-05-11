@@ -18,3 +18,4 @@ conn.exec( 'select * from pintest ') do |res|
 
   end
 end
+

@@ -37,15 +37,23 @@ end
   puts "time: insert t_#{n} (n_tuples: #{n_tuples}) -> #{t}"
 end
 
-from_list = []
+from_list = ""
 0.upto n_rels-1 do |n|
-  from_list << "t_#{n}"
+  if n != n_rels-1
+    from_list += " t_#{n},"
+  else
+  	from_list += " t_#{n}"
+  end
 end
-p from_list
+select_query = "select * from " + from_list
+t = Benchmark.realtime do |bench|
+  conn.exec "explain " + select_query
+end
+puts "time: explain " + select_query + " -> #{t}"
 
-# # clean up
-# 0.upto n_rels-1 do |n|
-#   query = "drop table t_#{n}"
-#   puts query
-#   conn.exec query
-# end
+# clean up
+0.upto n_rels-1 do |n|
+  query = "drop table t_#{n}"
+  puts query
+  conn.exec query
+end
