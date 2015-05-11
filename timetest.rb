@@ -7,7 +7,7 @@ require 'pg'
 require 'benchmark'
 
 default_num = 100
-N = ARGV[0].to_i || default
+N = (ARGV[0] || default_num).to_i
 
 conn = PG.connect
 

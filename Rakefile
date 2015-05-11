@@ -6,3 +6,11 @@ task :timetest do
     ruby "timetest.rb #{n_tuples}"
   end
 end
+
+task :unitest do
+  ruby "unitest.rb"
+end
+
+task :init do
+  sh "bundle install --binstubs"
+end
