@@ -13,6 +13,11 @@ n_rels = 2
 n_rels = (ARGV[0] || n_rels).to_i
 n_tuples_base = 1000
 
+if n_rels < 1
+  puts "usage: rake unitest[n_rels] (where n_rels should be more than 0)"
+  exit
+end
+
 conn = PG.connect
 
 0.upto n_rels-1 do |n|

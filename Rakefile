@@ -1,4 +1,4 @@
-task default: %w[timetest]
+task default: %w[init]
 
 task :timetest do
   0.upto 3 do |e|
@@ -7,13 +7,11 @@ task :timetest do
   end
 end
 
-task :unitest, 'n_rels'
-task :unitest do |t, args|
+task :unitest, 'n_rels' do |t, args|
   ruby "unitest.rb #{args['n_rels']}"
 end
 
-task :drop, 'n_rels'
-task :drop do |t, args|
+task :drop, 'n_rels' do |t, args|
   ruby "drop_tables.rb #{args['n_rels']}"
 end
 
