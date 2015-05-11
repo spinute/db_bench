@@ -7,6 +7,16 @@ task :timetest do
   end
 end
 
+task :rand, 'n_rels' do |t, args|
+  ruby "random_join.rb #{args['n_rels']}"
+end
+
+task :rand_experiment do
+  1.upto 100 do |i|
+    sh "rake rand[#{i}] -q"
+  end
+end
+
 task :unitest, 'n_rels' do |t, args|
   ruby "unitest.rb #{args['n_rels']}"
 end
