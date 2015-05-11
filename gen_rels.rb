@@ -5,16 +5,28 @@ require 'bundler/setup'
 
 require 'pg'
 
-n_rels = 100
+if !args[0] || !args[1]
+  puts "usamge: ruby gen_rels.rb n_rels n_attrs"
+  exit
+end
+
+n_rels = args[0].to_i
+n_attrs = args[1].to_i
+
 n_tuples_base = 100
 
 conn = PG.connect
 
 # t_i_j is jth table having i attrs
 0.upto n_rels-1 do |n|
-  query = "create table t_2_#{n} (key integer primary key, value integer)"
+  values = "(key integer primary key, "
+  n_attrs.times do |i|
+    #implementation
+  end
+
+  query = "create table t_#{n_attrs}_#{n} #{values}"
   conn.exec query
-  puts "create t_2_#{n}"
+  puts "create t_#{n_attrs}_#{n}"
 end
 
 0.upto n_rels-1 do |n|
