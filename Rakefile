@@ -7,8 +7,14 @@ task :timetest do
   end
 end
 
-task :unitest do
-  ruby "unitest.rb"
+task :unitest, 'n_rels'
+task :unitest do |t, args|
+  ruby "unitest.rb #{args['n_rels']}"
+end
+
+task :drop, 'n_rels'
+task :drop do |t, args|
+  ruby "drop_tables.rb #{args['n_rels']}"
 end
 
 task :init do
