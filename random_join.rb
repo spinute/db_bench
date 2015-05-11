@@ -32,9 +32,16 @@ end
 conn = PG.connect
 
 select_query = "select #{select_list} from #{from_list}"
+
+res = nil
 t = Benchmark.realtime do |bench|
-  conn.exec "explain " + select_query
+  res = conn.exec "explain " + select_query
 end
+
+# show ans for explain
+# res.each do |row|
+#   puts row
+# end
 
 # puts "time: explain " + select_query + " -> #{t}"
 p t

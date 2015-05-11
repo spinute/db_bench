@@ -6,15 +6,19 @@
 ## TODO
 - [ ] 論文中の実験設定の再現
   - [x] 簡易実装とその実験
-  - [ ] attrの選択にもランダム性を入れる
+  - [x] attrの選択にもランダム性を入れる
   - [ ] select対象にもランダム性を入れる
   - [ ] postgresのEXPLAINと論文(systemRのコスト計算モデルを採用したと書いてある)との突き合わせ
 - [x] pgの使い方の理解
 - [ ] 計測
-  - [ ] postgres
+  - [x] postgres
   - [ ] mariaDB
   - [ ] sqlite3
-- [ ] 下の方整理
+- [x] 下の方整理
+- [ ] parserの実装
+
+## parserの実装
+conjunctive queryをPDDLにパースする
 
 ## 再現実験の方法(要整理)
 data/postgresql.confを編集してサーバーを再起動するとパラメータを設定できる
