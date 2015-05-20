@@ -1,0 +1,21 @@
+
+
+MacOS(10.9)でのipgenのビルド
+
+GUROBI_HOME=/Library/gurobi563/mac64 make gurobi
+-lgurobi60がないのでリンクできないと言われた
+
+gurobiのバージョンアップ
+ 6系なら動作するのだろうか?6.0決め打ち?
+ 5系でもライブラリの名前だけ変更したら動くのかもしれない
+  Makefile内の-lgurobi60を-lgurobi56にしたらそのままビルドは通った
+ 警告は6つ出るがもともとだろうか
+ release.gurobi, debug.gurobi共に生成され、また実行してusageが出力されることを確認できた
+
+直接r195~を実行するとエラー
+IPGEN_PATHとFD_PATHを適切に設定するとエラーは消えた
+また、引数としてドメイン、問題ファイルのフルパスを渡してやることでプランが出力された
+
+./r195.ip27.z3.tb0.sym0.gurobi.sh `pwd`/domain `pwd`/probrem
+
+プランは/tmp/TMPDIR/planに吐出され、これをVALでチェックしている
